@@ -84,3 +84,35 @@ Probability Plots
 * Plot (computation illustrated by R code) should show data points roughly on a straight line
 * Can identify outliers
 
+Data Visualization
+========================================================
+* Advantages of visualization:
+    * Easily detect patterns in data
+    * Generate greater interest, understanding, and recall [for non-specialists and specialists alike]
+    * Compress the meaning of large amounts of data into a smaller set of images
+    * Discover hidden structure of data
+    
+    
+Basic Methods applied to Multivariate Data
+========================================================
+* Scatterplot
+* Bivariate Boxplot 
+    * alternatively, Convex Hull
+* Chi-plot - should fluctuate around zero if independent
+
+Bubble and Glyph plots
+========================================================
+* Bubble plot - size and shading of bubble introduces additional dimensions to the data
+* Glyph plots - multidimensional, can be hard to interpret
+
+Scatterplot Matrix and Kernel Density
+========================================================
+* Scatterplot matrix plots multiple variables against each other simultaneously
+* Kernel density visualizes the distribution of data
+* These two methods can be combined to create a powerful summary of multivariate data
+
+
+Three-dimensional data
+========================================================
+* Many tools can be used to visualize data in three dimensions
+* Just a few examples in the code, more are illustrated at [my Data Visualization workshop](https://github.com/ryandata/DataViz)
