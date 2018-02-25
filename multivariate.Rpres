@@ -84,17 +84,3 @@ Probability Plots
 * Plot (computation illustrated by R code) should show data points roughly on a straight line
 * Can identify outliers
 
-
-Slide With Code
-========================================================
-
-```{r}
-summary(cars)
-```
-
-Slide With Plot
-========================================================
-
-```{r, echo=FALSE}
-plot(cars)
-```
