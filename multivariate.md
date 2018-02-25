@@ -76,7 +76,6 @@ Covariance, Correlation, Distance, and the Multivariate Normal Distribution
 * The **Multivariate Normal Distribution** is most commonly assumed as a distribution of the underlying data, when this is required to advance the analysis.
     * The multivariate normal is "well-behaved" in roughly the same way that the univariate normal distribution is.
 
-
 Probability Plots
 ========================================================
 * We may need to test whether data fits the multivariate normal distribution
