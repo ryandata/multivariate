@@ -1,4 +1,4 @@
-A Short Course in Multivariate Statistical Methods with R / <U+041E><U+043B><U+043E><U+043D> <U+0445><U+044D><U+043C><U+0436><U+044D><U+044D><U+0441><U+0442> <U+0441><U+0442><U+0430><U+0442><U+0438><U+0441><U+0442><U+0438><U+043A><U+0438><U+0439><U+043D> <U+0431><U+043E><U+0433><U+0438><U+043D><U+043E> <U+0445><U+044D><U+043C><U+0436><U+044D><U+044D><U+043D><U+0438><U+0439> <U+0441><U+0443><U+0440><U+0433><U+0430><U+043B><U+0442> R <U+043F><U+0440><U+043E><U+0433><U+0440><U+0430><U+043C><U+043C> <U+0434><U+044D><U+044D><U+0440>
+A Short Course in Multivariate Statistical Methods with R
 ========================================================
 author: Ryan Womack, Rutgers University, rwomack@rutgers.edu
 date: 2018-02-26
@@ -15,10 +15,10 @@ Outline
 * Exploration and Visualization
 * Principal Components
 * Multidimensional Scaling
-* Cluster Analysis
 * Exploratory Factor Analysis
 * Confirmatory Factor Analysis
     * Structural Equation Modeling
+* Cluster Analysis
 * Repeated Measures
 * Additional topics, wrapup
 
@@ -116,3 +116,88 @@ Three-dimensional data
 ========================================================
 * Many tools can be used to visualize data in three dimensions
 * Just a few examples in the code, more are illustrated at [my Data Visualization workshop](https://github.com/ryandata/DataViz)
+
+Principal Components Analysis
+========================================================
+With multivariate data, we have **too many variables**
+* Exploratory data analysis by methods such as scatterplots quickly becomes difficult
+* We need to reduce the number of variables under consideration
+* Example: GPA (Grade point average) is used instead of a long list of individual grades in courses to summarize a students' achievement
+* This is just a (weighted) combination of variables
+
+PCA, continued
+========================================================
+* The *principal components* in principal components analysis are vectors
+* Each vector is a linear combination of variables
+    \[ z = ax_1 + bx_2 + cx_3 ... \]
+* We want to find the smallest number of vectors that account for most of the variation in the data
+* We do not know beforehand which variables are most useful for this task
+* PCA solves this problem
+* A **low dimension summary** of the data for graphing or other representations
+
+Solving the problem
+========================================================
+* In one dimension, this is the same as determining the line that best fits the data
+
+* In *m* dimensions, we find the m-dimensional projection 
+that best fits the data
+
+* This is the projection determined by variables with non-zero eigenvalues
+
+Scale
+========================================================
+* This method is not *scale-invariant*, i.e., it produces different results for different units of measurement
+* So, studying the covariance matrix for solutions also faces the scale-invariance problem
+* In practice, we use the correlation matrix instead to generate solutions (which is scaled to unit interval)
+* This also means we are essentially assuming that all variables will be equally weighted, with equal potential of being part of the solution (not always appropriate)
+
+How many components?
+========================================================
+* The components are directly related to the covariance matrix
+$$latex S=A \lambda A^T  $$
+
+* We can select the number of components that allows us to approximate S efficiently:
+    * by setting a target coverage of S (80% of variance)
+    * by setting a cutoff value for $latex \lambda $ (e.g. 0.7, or simply more than the average for the data)
+    * by using a scree diagram (looking for a bend or "elbow")
+
+
+Principal Components Scores
+========================================================
+* The principal components score for each observation is not predictive of the outcome (like the predicted values of a regression)
+* But it shows which components are influential for each observation
+* Scaling the data is often recommended to make interpretation clearer and more reliable
+* Extreme caution should be used when "labeling" resulting components with meaning. The mathematical explanation of variance does not imply causal relationships.
+
+Multidimensional Scaling
+========================================================
+* An extension of PCA's methodology
+* Extract a low-dimensional representation of the data, preserving relative distances
+* Works on the distance matrix
+* Some measurement of how similar or dissimilar items are
+* Here, two spatial methods:
+    * *Classical Multidimensional Scaling*
+    * *Non-metric Multidimensional Scaling*
+
+
+Solving MDS
+========================================================
+* Start with the (Euclidean) distance matrix (sometimes all we have)
+* Compute an estimate of original data
+* Because this method also uses the eigenvalues that account for most of the variation, it is equivalent to principal components, and often called *principal coordinates*
+* Find where $latex \lambda $ are "high" 
+$$latex P_m = \dfrac{\sum_{i=1}^m \lambda_i}{\sum_{i=1}^q \lambda_i}$$
+*  Minimum spanning tree ("mst" command from "ape" package) can identify close groupings of observations
+
+Non-metric MDS 
+========================================================
+* Typically with ordered or ranked data, we can use a non-metric technique
+* *isoMDS* command from "MASS" package
+* use Shepard diagram to diagnose fit
+
+Correspondance Analysis
+========================================================
+* essentially a method for plotting associations between categorical variables
+* Row variables that appear close in a plot are similar
+* Column variables that appear close are similar
+* Row/column pairs indicate association

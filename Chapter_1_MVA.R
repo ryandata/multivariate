@@ -1,3 +1,4 @@
+# Multivariate Data
 ### R code from vignette source 'Ch-MVA.Rnw'
 # lightly edited by Ryan Womack from original source in
 # MVA package by Brian Everitt and Torsten Hothorn
@@ -136,6 +137,11 @@ cov(subset(measure, gender == "male")[,
 ### code chunk number 10: ch:MVA:measure:cor
 ###################################################
 cor(measure[, c("chest", "waist", "hips")])
+
+cor(subset(measure, gender == "female")[, 
+                                        c("chest", "waist", "hips")])
+cor(subset(measure, gender == "male")[, 
+                                      c("chest", "waist", "hips")])
 
 
 ###################################################

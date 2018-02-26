@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> bfa77a40160f54d0e2b283213f05951291581bb8
+# Data Exploration and Visualization
 ### R code from vignette source 'Ch-Viz.Rnw'
 # lightly edited by Ryan Womack from original source in
 # MVA package by Brian Everitt and Torsten Hothorn
@@ -879,7 +876,3 @@ plot(cloud(depth ~ lat * long | Magnitude, data = quakes,
 ### code chunk number 41: ch:Viz:USairpollution:stalac
 ###################################################
 stalac(USairpollution)
-
-
->>>>>>> a0ee8e59f40e3bc353d2e6bd21b1de779d8a139a
->>>>>>> bfa77a40160f54d0e2b283213f05951291581bb8
