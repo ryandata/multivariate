@@ -56,6 +56,7 @@ Setup
     * [Rstudio.com](https://rstudio.com)
 * code and presentation available from
     * [github.com/ryandata](https://github.com/ryandata/multivariate)
+* [Rstudio.cloud](https://rstudio.cloud) is an experimental cloud server for R, free for now
 * other texts distributed locally
 
 * [YouTube.com/librarianwomack](https://youtube.com/librarianwomack) has tutorials.  Other projects, papers, materials listed on [ryanwomack.com](https://ryanwomack.com) website
