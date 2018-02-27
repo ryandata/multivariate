@@ -201,3 +201,94 @@ Correspondance Analysis
 * Row variables that appear close in a plot are similar
 * Column variables that appear close are similar
 * Row/column pairs indicate association
+
+Exploratory Factor Analysis
+========================================================
+* Latent variables cannot be measured directly
+* Manifest variables are linked to the underlying latent variables
+* E.g., intelligence may manifest in academic performance, test scores
+* Factor analysis enables us to discover relationships between manifest and latent variables
+* **Exploratory Factor Analysis** focuses on the discovery process
+* Does not prove the strength of the relationship or test the model (Confirmatory Factor Analysis)
+
+The k-Factor Analysis Model
+========================================================
+* *q* observed variables (the manifest variables)
+* *m*<*q* latent variables, modeled by
+ \[ z = ax_1 + bx_2 + cx_3 ... + u\]
+* The a,b,c... coefficients are essentially regression coefficients, but are called **factor loadings** in factor analysis. The *u* is random disturbance, assumed to be uncorrelated.
+* Therefore, correlation among observed variables arises only due to relationship with the common underlying latent variables.  Not due to correlated errors.
+
+The k-Factor Analysis Model, continued
+========================================================
+* Because latent variables, termed **factors**, are unobserved, we can arbitratily fix their scales and locations.
+* We assume they are standardized with mean 0, standard deviation of 1
+* Also assume factors are uncorrelated with each other => factor loadings are the correlations of manifest variables with factors
+* Variance of observed variables can be split into *communality* and *specific* parts
+* The communality for a manifest variable is the most useful to estimate factors
+
+Relationship to PCA
+========================================================
+* We solve the model by using the observed data's covariance matrix
+* Uses similar technique as Principal Components
+* But because scale is arbitrary, covariance and correlation matrix produce equivalent results
+* Solution methods are either *principal factor analysis* or *maximum likelihood estimatation [MLE]* (details in text)
+* Solution by iteration occasionally results in a *Heywood case* (negative variance)
+
+Finalizing the model
+========================================================
+* Selection of the number of factors is easiest when using MLE
+* standard $latex \chi^2 $ test of whether variance reduction is significantly improved by adding additional factor
+* Also, solutions are not unique due to the arbitrariness of the underlying variables
+* Typically use **factor rotation** to produce factor loadings that are either large and positive or zero.  Called a "simple structure"
+* **Caution!** Although factor analysis point distribution is invariant to rotation, this is NOT true of principal components analysis
+* Finally, we can assign **factor scores** to each observation
+
+Explanatory Factor Analysis, conclusions
+========================================================
+* EFA is a tool for understanding features of data
+* *factanal* command is used in **R** to implement
+* EFA is  starting point for more rigorous investigation, modeling
+* Overinterpretation of results and meaning of the latent variables has been heavily criticized
+* The latent variables are, after all, hypothetical. Not the same as factually observed data
+
+Confirmatory Factor Analysis
+========================================================
+* Using EFA, we arrive at a proposed model
+* Is it valid?
+* We must test it on **new** data
+* **Confirmatory Factor Analysis** serves this purpose
+    * A subset of the more general methodology, **Structural Equation Modeling**
+  
+Modeling and Testing
+========================================================
+* Again, we will use *Maximum Likelihood Estimation (MLE)* to test model fit
+* We assume the multivariate normal distribution describes the data
+* If the number of free parameters and proposed relationship equations are indeterminate, the model is **unidentifiable**
+* One requirement, $latex t < \frac{q(q+1)}{2}$, where t is the number of free parameters to q manifest variables
+* Otherwise, no simple rules for detemining identifiability
+
+
+Assessing Fit
+========================================================
+* $latex \chi^2 $ statistic is typically used on the fitted vs. unconstrained covariance matrix
+* Other measures, Goodness of Fit, Adjusted Goodness of Fit, and more
+* normed residuals < 2 is another check
+
+Performing the Confirmatory Factor Analysis
+========================================================
+* outline proposed equations
+* set certain parameters to zero where we believe there is no relationship
+* estimate remaining free parameters
+* then test whether fit is good
+* in R, *sem* package is used for this, and other kinds of structural equation modeling
+* uses special model notation
+* path diagram to explain final model
+
+Structural Equation Modeling
+========================================================
+* CFA can be considered a kind of constrained Structural Equation Modeling (SEM)
+* SEM allows any kind of relationship between manifest and latent variables to be proposed
+* Can lead to complex and difficult to interpret models
+* Best to base relationships on well-estabilished disciplinary knowledge
+* SEM is a large and growing research area on its own

@@ -121,8 +121,8 @@ $(document).ready(function () {
 </div>
 
 
-<div id="a-short-course-in-multivariate-statistical-methods-with-r------r--" class="section level1">
-<h1>A Short Course in Multivariate Statistical Methods with R/Олон хэмжээст статистикийн богино хэмжээний сургалт R программ дээр</h1>
+<div id="a-short-course-in-multivariate-statistical-methods-with-r" class="section level1">
+<h1>A Short Course in Multivariate Statistical Methods with R</h1>
 <p>author: Ryan Womack, Rutgers University, <a href="mailto:rwomack@rutgers.edu">rwomack@rutgers.edu</a> date: 2018-02-26 autosize: true</p>
 <p>Based on Brian Everitt and Torsten Hothorn, <em>An Introduction to Applied Multivariate Statistical Analysis with R</em>, Springer, 2011.</p>
 <p>First presented at Mongolian University of Life Sciences, February 2018</p>
@@ -367,6 +367,119 @@ $(document).ready(function () {
 <li>Row variables that appear close in a plot are similar</li>
 <li>Column variables that appear close are similar</li>
 <li>Row/column pairs indicate association</li>
+</ul>
+</div>
+<div id="exploratory-factor-analysis" class="section level1">
+<h1>Exploratory Factor Analysis</h1>
+<ul>
+<li>Latent variables cannot be measured directly</li>
+<li>Manifest variables are linked to the underlying latent variables</li>
+<li>E.g., intelligence may manifest in academic performance, test scores</li>
+<li>Factor analysis enables us to discover relationships between manifest and latent variables</li>
+<li><strong>Exploratory Factor Analysis</strong> focuses on the discovery process</li>
+<li>Does not prove the strength of the relationship or test the model (Confirmatory Factor Analysis)</li>
+</ul>
+</div>
+<div id="the-k-factor-analysis-model" class="section level1">
+<h1>The k-Factor Analysis Model</h1>
+<ul>
+<li><em>q</em> observed variables (the manifest variables)</li>
+<li><em>m</em>&lt;<em>q</em> latent variables, modeled by <span class="math display">\[ z = ax_1 + bx_2 + cx_3 ... + u\]</span></li>
+<li>The a,b,c… coefficients are essentially regression coefficients, but are called <strong>factor loadings</strong> in factor analysis. The <em>u</em> is random disturbance, assumed to be uncorrelated.</li>
+<li>Therefore, correlation among observed variables arises only due to relationship with the common underlying latent variables. Not due to correlated errors.</li>
+</ul>
+</div>
+<div id="the-k-factor-analysis-model-continued" class="section level1">
+<h1>The k-Factor Analysis Model, continued</h1>
+<ul>
+<li>Because latent variables, termed <strong>factors</strong>, are unobserved, we can arbitratily fix their scales and locations.</li>
+<li>We assume they are standardized with mean 0, standard deviation of 1</li>
+<li>Also assume factors are uncorrelated with each other =&gt; factor loadings are the correlations of manifest variables with factors</li>
+<li>Variance of observed variables can be split into <em>communality</em> and <em>specific</em> parts</li>
+<li>The communality for a manifest variable is the most useful to estimate factors</li>
+</ul>
+</div>
+<div id="relationship-to-pca" class="section level1">
+<h1>Relationship to PCA</h1>
+<ul>
+<li>We solve the model by using the observed data’s covariance matrix</li>
+<li>Uses similar technique as Principal Components</li>
+<li>But because scale is arbitrary, covariance and correlation matrix produce equivalent results</li>
+<li>Solution methods are either <em>principal factor analysis</em> or <em>maximum likelihood estimatation [MLE]</em> (details in text)</li>
+<li>Solution by iteration occasionally results in a <em>Heywood case</em> (negative variance)</li>
+</ul>
+</div>
+<div id="finalizing-the-model" class="section level1">
+<h1>Finalizing the model</h1>
+<ul>
+<li>Selection of the number of factors is easiest when using MLE</li>
+<li>standard $latex ^2 $ test of whether variance reduction is significantly improved by adding additional factor</li>
+<li>Also, solutions are not unique due to the arbitrariness of the underlying variables</li>
+<li>Typically use <strong>factor rotation</strong> to produce factor loadings that are either large and positive or zero. Called a “simple structure”</li>
+<li><strong>Caution!</strong> Although factor analysis point distribution is invariant to rotation, this is NOT true of principal components analysis</li>
+<li>Finally, we can assign <strong>factor scores</strong> to each observation</li>
+</ul>
+</div>
+<div id="explanatory-factor-analysis-conclusions" class="section level1">
+<h1>Explanatory Factor Analysis, conclusions</h1>
+<ul>
+<li>EFA is a tool for understanding features of data</li>
+<li><em>factanal</em> command is used in <strong>R</strong> to implement</li>
+<li>EFA is starting point for more rigorous investigation, modeling</li>
+<li>Overinterpretation of results and meaning of the latent variables has been heavily criticized</li>
+<li>The latent variables are, after all, hypothetical. Not the same as factually observed data</li>
+</ul>
+</div>
+<div id="confirmatory-factor-analysis" class="section level1">
+<h1>Confirmatory Factor Analysis</h1>
+<ul>
+<li>Using EFA, we arrive at a proposed model</li>
+<li>Is it valid?</li>
+<li>We must test it on <strong>new</strong> data</li>
+<li><strong>Confirmatory Factor Analysis</strong> serves this purpose
+<ul>
+<li>A subset of the more general methodology, <strong>Structural Equation Modeling</strong></li>
+</ul></li>
+</ul>
+</div>
+<div id="modeling-and-testing" class="section level1">
+<h1>Modeling and Testing</h1>
+<ul>
+<li>Again, we will use <em>Maximum Likelihood Estimation (MLE)</em> to test model fit</li>
+<li>We assume the multivariate normal distribution describes the data</li>
+<li>If the number of free parameters and proposed relationship equations are indeterminate, the model is <strong>unidentifiable</strong></li>
+<li>One requirement, <span class="math inline">\(latex t &lt; \frac{q(q+1)}{2}\)</span>, where t is the number of free parameters to q manifest variables</li>
+<li>Otherwise, no simple rules for detemining identifiability</li>
+</ul>
+</div>
+<div id="assessing-fit" class="section level1">
+<h1>Assessing Fit</h1>
+<ul>
+<li>$latex ^2 $ statistic is typically used on the fitted vs. unconstrained covariance matrix</li>
+<li>Other measures, Goodness of Fit, Adjusted Goodness of Fit, and more</li>
+<li>normed residuals &lt; 2 is another check</li>
+</ul>
+</div>
+<div id="performing-the-confirmatory-factor-analysis" class="section level1">
+<h1>Performing the Confirmatory Factor Analysis</h1>
+<ul>
+<li>outline proposed equations</li>
+<li>set certain parameters to zero where we believe there is no relationship</li>
+<li>estimate remaining free parameters</li>
+<li>then test whether fit is good</li>
+<li>in R, <em>sem</em> package is used for this, and other kinds of structural equation modeling</li>
+<li>uses special model notation</li>
+<li>path diagram to explain final model</li>
+</ul>
+</div>
+<div id="structural-equation-modeling" class="section level1">
+<h1>Structural Equation Modeling</h1>
+<ul>
+<li>CFA can be considered a kind of constrained Structural Equation Modeling (SEM)</li>
+<li>SEM allows any kind of relationship between manifest and latent variables to be proposed</li>
+<li>Can lead to complex and difficult to interpret models</li>
+<li>Best to base relationships on well-estabilished disciplinary knowledge</li>
+<li>SEM is a large and growing research area on its own</li>
 </ul>
 </div>
 

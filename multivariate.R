@@ -25,4 +25,4 @@ publishingpackages <- c("RJSONIO", "rsconnect", "PKI", "rstudioapi", "packrat")
 install.packages(publishingpackages, dependencies=TRUE)
 
 # these packages are the primary packages used by the Everitt/Hothorn book
-install.packages("HSAUR2", "MCA", dependencies=TRUE)
+install.packages("HSAUR2", "MCA", "ellipse", "DiagrammeR", dependencies=TRUE)
