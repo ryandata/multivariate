@@ -1,4 +1,7 @@
+# Confirmatory Factor Analyis and Structural Equation Modeling
 ### R code from vignette source 'Ch-SEM.Rnw'
+# lightly edited by Ryan Womack from original source in
+# MVA package by Brian Everitt and Torsten Hothorn
 
 ###################################################
 ### code chunk number 1: setup
