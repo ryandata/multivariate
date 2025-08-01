@@ -1,4 +1,7 @@
-# A Short Course in Multivariate Statistical Methods with R
+# A Short Course in Multivariate Statistical Methods with R (deprecated)
+This project is deprecated and will be deleted in February 2028. Please plan to fork, download, copy accordingly.
+
+(Projects inactive for ten years or more will be deleted from my account.)
 
 A Short Course in Multivariate Statistical Methods with R
 Олон хэмжээст статистикийн богино хэмжээний сургалт R программ дээр
